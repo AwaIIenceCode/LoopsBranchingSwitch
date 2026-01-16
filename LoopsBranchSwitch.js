@@ -1,0 +1,136 @@
+const prompt = require("prompt-sync")();
+
+//method for entering a range from the user
+function EnterUserRange(firstUserNumberRange, lastUserNumberRange) 
+{
+    while (isNaN(firstUserNumberRange) || isNaN(lastUserNumberRange) || lastUserNumberRange < firstUserNumberRange)
+    {
+        firstUserNumberRange = Number(prompt("\nEnter the start of the range -> "));
+        lastUserNumberRange = Number(prompt("Enter the finish of the range -> "));
+
+        if (isNaN(firstUserNumberRange) || isNaN(lastUserNumberRange)) { console.log("\nMust be a number! Try again..."); continue; }
+        if (lastUserNumberRange < firstUserNumberRange) { console.log("\nFirst number must be less than last number, try again..."); continue; }
+    }
+
+    return { firstUserNumberRange, lastUserNumberRange };
+}
+
+//method for entering range sum calculation
+function sumUserList(firstUserNumberRange, lastUserNumberRange) 
+{
+    let resultSumRange = 0;
+
+    for (let i = firstUserNumberRange; i <= lastUserNumberRange; i++)
+    {
+        resultSumRange += i;
+    }
+
+    return resultSumRange;
+}
+
+//method for entering range subtraction calculation
+function subtractionUserList(firstUserNumberRange, lastUserNumberRange) 
+{
+    let resultSubRange = 0;
+
+    for (let i = firstUserNumberRange; i <= lastUserNumberRange; i++)
+    {
+        resultSubRange -= i;
+    }
+
+    return resultSubRange;
+}
+
+//method for entering range multiplication calculation
+function multiplicationUserList(firstUserNumberRange, lastUserNumberRange) 
+{
+    let resultMultiplicationRange = 1;
+
+    for (let i = firstUserNumberRange; i <= lastUserNumberRange; i++)
+    {
+        resultMultiplicationRange *= i;
+    }
+
+    return resultMultiplicationRange;
+}
+
+//method for entering range avarage number calculation
+function deletionUserList(firstUserNumberRange, lastUserNumberRange) 
+{
+    let NumbersSum = 0;
+    let count = 0;
+
+    for (let i = firstUserNumberRange; i <= lastUserNumberRange; i++)
+    {
+        NumbersSum += i;
+        count++;
+    }
+
+    let resultDeletionRange = NumbersSum / count;
+
+    return resultDeletionRange;
+}
+
+function main()
+{
+    console.log("\n----- Welcome to the strange cycle calculator -----");
+    console.log("----- The calculator performs addition, subtraction, multiplication and division of numbers within your range -----");
+
+    let firstUserNumberRange, lastUserNumberRange; 
+    let userChoise;
+
+    while (true)
+    { 
+        console.log("\n\tPress \"1\" - for sum,\n\tPress \"2\" - for subtraction,\n\tPress \"3\" - for multiplication,\n\tPress \"4\" - for deletion,\n\tPress \"5\" - for exit");
+        userChoise = Number(prompt("\n\tEnter your choise -> "));
+
+        switch(userChoise)
+        {
+            case 1:
+                {
+                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);
+                    const userSum = sumUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult sum in your range = ${userSum}`); 
+                    break;
+                }
+
+            case 2:
+                {          
+                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
+                    const userSubtraction = subtractionUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult subtraction in your range = ${userSubtraction}`);
+                    break;
+                }
+
+            case 3:
+                {                
+                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
+                    const userMultiplication = multiplicationUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult multiplication in your range = ${userMultiplication}`);
+                    break;
+                }
+
+            case 4:
+                {              
+                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
+                    const userDeletion = deletionUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult deletion in your range = ${userDeletion}`);
+                    break;
+                }
+
+            case 5:
+                {
+                    console.log("\nYou have exited the program. Have a nice day!");           
+                    return;
+                }
+
+            default:
+                {
+                    console.log("There is no such answer option. Enter from 1 to 5");
+                    break;
+                }
+        }
+    }
+}
+
+main();
