@@ -1,8 +1,10 @@
 const prompt = require("prompt-sync")();
 
 //method for entering a range from the user
-function EnterUserRange(firstUserNumberRange, lastUserNumberRange) 
+function EnterUserRange() 
 {
+    let firstUserNumberRange, lastUserNumberRange; 
+
     while (isNaN(firstUserNumberRange) || isNaN(lastUserNumberRange) || lastUserNumberRange < firstUserNumberRange)
     {
         firstUserNumberRange = Number(prompt("\nEnter the start of the range -> "));
@@ -55,7 +57,7 @@ function multiplicationUserList(firstUserNumberRange, lastUserNumberRange)
 }
 
 //method for entering range avarage number calculation
-function deletionUserList(firstUserNumberRange, lastUserNumberRange) 
+function avarageUserList(firstUserNumberRange, lastUserNumberRange)  
 {
     let NumbersSum = 0;
     let count = 0;
@@ -66,9 +68,9 @@ function deletionUserList(firstUserNumberRange, lastUserNumberRange)
         count++;
     }
 
-    let resultDeletionRange = NumbersSum / count;
+    let resultAvarageRange = NumbersSum / count;
 
-    return resultDeletionRange;
+    return resultAvarageRange; 
 }
 
 function main()
@@ -76,19 +78,18 @@ function main()
     console.log("\n----- Welcome to the strange cycle calculator -----");
     console.log("----- The calculator performs addition, subtraction, multiplication and division of numbers within your range -----");
 
-    let firstUserNumberRange, lastUserNumberRange; 
     let userChoise;
 
     while (true)
     { 
-        console.log("\n\tPress \"1\" - for sum,\n\tPress \"2\" - for subtraction,\n\tPress \"3\" - for multiplication,\n\tPress \"4\" - for deletion,\n\tPress \"5\" - for exit");
+        console.log("\n\tPress \"1\" - for sum,\n\tPress \"2\" - for subtraction,\n\tPress \"3\" - for multiplication,\n\tPress \"4\" - for avarage,\n\tPress \"5\" - for exit");
         userChoise = Number(prompt("\n\tEnter your choise -> "));
 
         switch(userChoise)
         {
             case 1:
                 {
-                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);
+                    const userRange = EnterUserRange();
                     const userSum = sumUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
                     console.log(`\nResult sum in your range = ${userSum}`); 
                     break;
@@ -96,7 +97,7 @@ function main()
 
             case 2:
                 {          
-                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
+                    const userRange = EnterUserRange();        
                     const userSubtraction = subtractionUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
                     console.log(`\nResult subtraction in your range = ${userSubtraction}`);
                     break;
@@ -104,7 +105,7 @@ function main()
 
             case 3:
                 {                
-                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
+                    const userRange = EnterUserRange();        
                     const userMultiplication = multiplicationUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
                     console.log(`\nResult multiplication in your range = ${userMultiplication}`);
                     break;
@@ -112,9 +113,9 @@ function main()
 
             case 4:
                 {              
-                    const userRange = EnterUserRange(firstUserNumberRange, lastUserNumberRange);        
-                    const userDeletion = deletionUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult deletion in your range = ${userDeletion}`);
+                    const userRange = EnterUserRange();        
+                    const userAvarage = avarageUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult avarage in your range = ${userAvarage}`);
                     break;
                 }
 
