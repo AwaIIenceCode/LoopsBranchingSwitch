@@ -56,8 +56,8 @@ function multiplicationUserList(firstUserNumberRange, lastUserNumberRange)
     return resultMultiplicationRange;
 }
 
-//method for entering range avarage number calculation
-function avarageUserList(firstUserNumberRange, lastUserNumberRange)  
+//method for entering range average number calculation
+function averageUserList(firstUserNumberRange, lastUserNumberRange)  
 {
     let NumbersSum = 0;
     let count = 0;
@@ -68,21 +68,21 @@ function avarageUserList(firstUserNumberRange, lastUserNumberRange)
         count++;
     }
 
-    let resultAvarageRange = NumbersSum / count;
+    let resultAverageRange = NumbersSum / count;
 
-    return resultAvarageRange; 
+    return resultAverageRange; 
 }
 
 function main()
 {
     console.log("\n----- Welcome to the strange cycle calculator -----");
-    console.log("----- The calculator performs addition, subtraction, multiplication and division of numbers within your range -----");
+    console.log("----- The calculator performs addition, subtraction, multiplication and average value of numbers within your range -----");
 
     let userChoise;
 
     while (true)
     { 
-        console.log("\n\tPress \"1\" - for sum,\n\tPress \"2\" - for subtraction,\n\tPress \"3\" - for multiplication,\n\tPress \"4\" - for avarage,\n\tPress \"5\" - for exit");
+        console.log("\n\tPress \"1\" - for sum,\n\tPress \"2\" - for subtraction,\n\tPress \"3\" - for multiplication,\n\tPress \"4\" - for average,\n\tPress \"5\" - for exit");
         userChoise = Number(prompt("\n\tEnter your choise -> "));
 
         switch(userChoise)
@@ -114,8 +114,8 @@ function main()
             case 4:
                 {              
                     const userRange = EnterUserRange();        
-                    const userAvarage = avarageUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult avarage in your range = ${userAvarage}`);
+                    const userAverage = averageUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+                    console.log(`\nResult average in your range = ${userAverage}`);
                     break;
                 }
 
