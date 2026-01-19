@@ -73,6 +73,15 @@ function averageUserList(firstUserNumberRange, lastUserNumberRange)
     return resultAverageRange; 
 }
 
+//method for starting operations
+function runOperation(operationFun, operationName)
+{
+    const userRange = EnterUserRange();
+    const result = operationFun(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
+    
+    console.log(`\nResult ${operationName} in your range = ${result}`)
+}
+
 function main()
 {
     console.log("\n----- Welcome to the strange cycle calculator -----");
@@ -89,33 +98,25 @@ function main()
         {
             case 1:
                 {
-                    const userRange = EnterUserRange();
-                    const userSum = sumUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult sum in your range = ${userSum}`); 
+                    runOperation(sumUserList, "sum"); 
                     break;
                 }
 
             case 2:
                 {          
-                    const userRange = EnterUserRange();        
-                    const userSubtraction = subtractionUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult subtraction in your range = ${userSubtraction}`);
+                    runOperation(subtractionUserList, "subtraction");
                     break;
                 }
 
             case 3:
                 {                
-                    const userRange = EnterUserRange();        
-                    const userMultiplication = multiplicationUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult multiplication in your range = ${userMultiplication}`);
+                    runOperation(multiplicationUserList, "multiplication");
                     break;
                 }
 
             case 4:
                 {              
-                    const userRange = EnterUserRange();        
-                    const userAverage = averageUserList(userRange.firstUserNumberRange, userRange.lastUserNumberRange);
-                    console.log(`\nResult average in your range = ${userAverage}`);
+                    runOperation(averageUserList, "average");
                     break;
                 }
 
